@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import {Organization} from "../models/Organization.model";
+import {Organization} from "../models/organization.model";
 
 const MakeAdmin = async (req: Request, res: Response) => {
     const { email, orgName } = req.body;

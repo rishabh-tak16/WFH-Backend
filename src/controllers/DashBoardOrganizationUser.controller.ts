@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { WFHApplicationModel, IWFHApplication } from '../models/WFHApplication.model';
+import { WFHApplicationModel, IWFHApplication } from '../models/wfhApplication.model';
 
 const DashBoardOrganizationUser = async (req: Request, res: Response) => {
     try {

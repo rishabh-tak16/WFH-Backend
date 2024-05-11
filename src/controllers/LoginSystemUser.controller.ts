@@ -1,8 +1,8 @@
 import { Request, Response } from "express";
-import {SystemUser} from "../models/SystemUser.model";
-import OtpModel from "../models/Otp.model";
+import {SystemUser} from "../models/systemUser.model";
+import OtpModel from "../models/otp.model";
 import jwt from "jsonwebtoken";
-import minuteDiff from "../util/TimeDifference.util";
+import minuteDiff from "../util/timeDifference.util";
 import { SECRET_KEY } from "../constants/common";
 
 const LoginSystemUser = async (req: Request, res: Response) => {
@@ -18,7 +18,7 @@ const LoginSystemUser = async (req: Request, res: Response) => {
             return res.status(400).json({ status: false, msg: "Invalid Credentials" });
         }
         
-        // Uncomment the following code if using OTP verification
+        // OTP verification
         // const validOtp = await OtpModel.find({ email }).sort({ _id: -1 });
 
         // if ([validOtp[0]["email_t"], validOtp[0]["otp_t"], validOtp[0]["time_t"]].some(el => !el || el === "")) {

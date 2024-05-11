@@ -1,16 +1,24 @@
 import { Request, Response } from 'express';
-import { createUser, getUserByEmail } from '../dao/SystemUser.dao';
+import { createUser, getUserByEmail } from '../dao/systemUser.dao';
 
 const RegisterSystemUser = async (req: Request, res: Response) => {
     try {
-        const { firstName, lastName, email, password, dob }: 
-        { firstName: string, lastName: string, email: string, password: string, dob: Date } = req.body;
+        const { firstName, lastName, email, password, dob } = req.body;
+        console.log(firstName, lastName, email, password, dob);
+        
 
         const user = await getUserByEmail(email);
         if (user) {
             return res.status(400).json({ flag: false, msg: "System User already exists" });
-        }
-
+        }   
+        console.log(">>>>>>>>>Request body:",req.body);
+        console.log(">>>>>>body:",{
+            firstName : firstName,
+            lastName : lastName,
+            email : email ,
+            password : password,
+            dob : dob
+        })
         const newUser = await createUser({
             firstName,
             lastName,

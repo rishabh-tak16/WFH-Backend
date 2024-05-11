@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import {OrganizationUser, IOrganizationUser}  from '../models/OrganizationUser.model';
-import { Organization, IOrganization } from '../models/Organization.model';
+import {OrganizationUser, IOrganizationUser}  from '../models/organizationUser.model';
+import { Organization, IOrganization } from '../models/organization.model';
 
 const RegisterOrganizationUser = async (req: Request, res: Response) => {
     try {

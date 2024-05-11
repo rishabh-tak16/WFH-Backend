@@ -1,4 +1,4 @@
-import  { OrganizationUser,IOrganizationUser } from '../models/OrganizationUser.model';
+import  { OrganizationUser,IOrganizationUser } from '../models/organizationUser.model';
 
 export const createUser = async (userData: IOrganizationUser): Promise<IOrganizationUser> => {
     return await OrganizationUser.create(userData);

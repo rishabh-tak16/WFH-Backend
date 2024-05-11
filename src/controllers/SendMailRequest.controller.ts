@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import nodemailer from "nodemailer";
 import generateOtp from "./GenerateOTP.controller";
-import OtpModel from "../models/Otp.model";
+import OtpModel from "../models/otp.model";
 
 const SendMail = async (req: Request, res: Response) => {
     let { email } = req.body;

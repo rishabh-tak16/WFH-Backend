@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
-import {OrganizationUser} from "../models/OrganizationUser.model";
-import minuteDiff from "../util/TimeDifference.util";
-import OtpModel from "../models/Otp.model";
+import {OrganizationUser} from "../models/organizationUser.model";
+import minuteDiff from "../util/timeDifference.util";
+import OtpModel from "../models/otp.model";
 import jwt from "jsonwebtoken";
 import { SECRET_KEY } from "../constants/common";
 

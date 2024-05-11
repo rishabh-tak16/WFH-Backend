@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
-import {Organization} from "../models/Organization.model";
-import {WFHApplicationModel} from "../models/WFHApplication.model";
+import {Organization} from "../models/organization.model";
+import {WFHApplicationModel} from "../models/wfhApplication.model";
 
 const GetAdmin = async (req: Request, res: Response) => {
     let { orgList, email } = req.body;

@@ -1,4 +1,4 @@
-import  { SystemUser,ISystemUser } from '../models/SystemUser.model';
+import  { SystemUser,ISystemUser } from '../models/systemUser.model';
 
 export const createUser = async (userData: ISystemUser) => {
     return await SystemUser.create(userData);

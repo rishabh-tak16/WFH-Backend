@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import {  Organization,IOrganization } from '../models/Organization.model';
+import {  Organization,IOrganization } from '../models/organization.model';
 
 const RegisterOrganization = async (req: Request, res: Response) => {
     try {

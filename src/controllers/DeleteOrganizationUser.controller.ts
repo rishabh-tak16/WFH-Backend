@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import  { OrganizationUser,IOrganizationUser } from '../models/OrganizationUser.model';
-import {Organization} from "../models/Organization.model";
+import  { OrganizationUser,IOrganizationUser } from '../models/organizationUser.model';
+import {Organization} from "../models/organization.model";
 
 const DeleteOrganizationUser = async (req: Request, res: Response) => {
     try {

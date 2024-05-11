@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { WFHApplicationModel } from '../models/WFHApplication.model';
+import { WFHApplicationModel } from '../models/wfhApplication.model';
 
 const UpdateWFH_Application = async (req: Request, res: Response) => {
     try {
