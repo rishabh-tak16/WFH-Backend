@@ -30,6 +30,8 @@ const Auth = (req: Request, res: Response, next: NextFunction) => {
         }
 
         req.user = decodedPayload.user[0];
+        console.log(decodedPayload.user[0]);
+        
         next();
     });
 };

@@ -31,6 +31,8 @@ const LoginSystemUser = async (req: Request, res: Response) => {
         // }
 
         const accessToken = jwt.sign({ user }, SECRET_KEY, { expiresIn: '3d' });
+        console.log(accessToken);
+        
 
         return res.status(200).json({
             success: true,

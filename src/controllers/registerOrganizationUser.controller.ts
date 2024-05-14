@@ -45,7 +45,7 @@ const RegisterOrganizationUser = async (req: Request, res: Response) => {
                 password: password,
                 dob: dob,
                 doj: doj,
-                organizationList: [organizationName] 
+                organization_list: [organizationName] 
             });
 
             await new_user.save();
@@ -55,7 +55,7 @@ const RegisterOrganizationUser = async (req: Request, res: Response) => {
             await OrganizationUser.updateOne(
                 { email: email },
                 {
-                    $addToSet: { organizationList: organizationName }
+                    $addToSet: { organization_list: organizationName }
                 }
             );
 

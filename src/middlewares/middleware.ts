@@ -13,7 +13,7 @@ const organizationUserLoginAuthencation = async (req: Request, res: Response, ne
     if (!user) {
         return res.status(200).json({ success: false });
     }
-    
+    console.log("user>>>>>>>>>>>>>>>>>>>",user);
     req.user = user;
     next();
 };

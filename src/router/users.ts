@@ -19,7 +19,7 @@ const router = express.Router();
 // System User
 router.post("/sysuser-register", RegisterSystemUser);
 router.post("/sysuser-login", LoginSystemUser);
-router.post("/sysuser-dashboard", DashBoardSystemUser);
+router.post("/sysuser-dashboard",Auth, DashBoardSystemUser);
 
 // Organization Users
 router.post("/orguser-login", LoginOrganizationUser);

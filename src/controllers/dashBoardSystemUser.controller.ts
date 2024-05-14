@@ -3,6 +3,9 @@ import { Model } from 'mongoose';
 import { OrganizationUser, IOrganizationUser } from '../models/organizationUser.model';
 
 const DashBoardSystemUser = async (req: Request, res: Response): Promise<void> => {
+
+    console.log("Jwt token user >>>>>>>>>",req.user);
+    
     try {
         const user_data: IOrganizationUser[] = await OrganizationUser.find({});
         
