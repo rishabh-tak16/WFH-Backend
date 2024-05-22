@@ -5,16 +5,8 @@ const MakeAdmin = async (req: Request, res: Response) => {
     const { email, orgName } = req.body;
 
     console.log(email, orgName);
-    if ([email, orgName].some(el => !el || el === "")) {
-        return res.status(400).json({ status: false, msg: "Fill the field" });
-    }
 
-    try {
-        const result = await Organization.findOne({ name: orgName });
-        if (!result) {
-            return res.status(400).json({ status: false, msg: "Organization not found" });
-        }
-
+        try {
         const updatedResult = await Organization.updateOne(
             { name: orgName },
             {
@@ -25,7 +17,7 @@ const MakeAdmin = async (req: Request, res: Response) => {
         );
         console.log(updatedResult);
 
-        return res.status(200).json({ status: true, msg: `${email} now admin of ${orgName}`, ack: updatedResult });
+        return res.status(200).json({ status: true, msg: `${email} is now admin of ${orgName}`, ack: updatedResult });
     } catch (error) {
         console.error("Error:", error);
         return res.status(500).json({ status: false, msg: "Internal Server Error" });

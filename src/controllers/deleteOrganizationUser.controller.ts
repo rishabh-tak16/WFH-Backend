@@ -1,23 +1,28 @@
 import { Request, Response } from 'express';
-import  { OrganizationUser,IOrganizationUser } from '../models/organizationUser.model';
-import {Organization} from "../models/organization.model";
+import { OrganizationUser, IOrganizationUser } from '../models/organizationUser.model';
+import { Organization } from "../models/organization.model";
 
 const DeleteOrganizationUser = async (req: Request, res: Response) => {
     try {
-        const { _id, email, organizationValue }: { _id: string, email: string, organizationValue: string } = req.body;
-
-        if (!(_id && email && organizationValue)) {
-            return res.status(400).json({ status: false, msg: "Organization not defined" });
+        const { email, organizationValue }: { email: string, organizationValue: string } = req.body;
+        console.log(">>>>>>>>>>>>>>>>>>>>>>>",req.body);
+        if (!(email && organizationValue)) {
+            return res.status(400).json({ status: false, msg: "Email and organization are required" });
         }
         
-        let updateUser: any;
-        const getUser: IOrganizationUser | null = await OrganizationUser.findOne({ _id });
+        const getUser: IOrganizationUser | null = await OrganizationUser.findOne({ email });
 
-        if (getUser && getUser.organization_list && getUser.organization_list.length <= 1) {
+        if (!getUser) {
+            return res.status(404).json({ status: false, msg: "User not found" });
+        }
+
+        let updateUser: any;
+
+        if (getUser.organization_list && getUser.organization_list.length <= 1) {
             updateUser = await OrganizationUser.deleteOne({ email });
         } else {
             updateUser = await OrganizationUser.updateOne(
-                { _id },
+                { email },
                 {
                     $pull: {
                         organization_list: organizationValue,

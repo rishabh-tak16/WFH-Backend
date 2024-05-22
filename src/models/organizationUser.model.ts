@@ -4,7 +4,7 @@ interface IOrganizationUser extends Document {
     firstName: string;
     lastName: string;
     email: string;
-    password: string;
+    // password: string;
     dob: Date;
     doj: Date;
     organization_list: string[];
@@ -24,10 +24,10 @@ const OrganizationUserSchema = new mongoose.Schema<IOrganizationUser>({
         required: true,
         unique: true,
     },
-    password: {
-        type: String,
-        required: true,
-    },
+    // password: {
+    //     type: String,
+    //     required: true,
+    // },
     dob: {
         type: Date,
         required: true,

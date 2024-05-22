@@ -4,9 +4,11 @@ interface IWFHApplication extends Document {
     email: string;
     createdDate: Date;
     orgName: string;
-    status: number; // 1 for approved, 2 for rejected, 3 for pending
+    status: number; // 1 for approved, 2 for pending, 3 for rejected
     reason: string;
+    rejectedReason: string;
     approvedDate: Date;
+    approvedBy: String;
 }
 
 const WFHApplicationSchema = new mongoose.Schema<IWFHApplication>({
@@ -30,12 +32,22 @@ const WFHApplicationSchema = new mongoose.Schema<IWFHApplication>({
         type: String,
         required: true
     },
+    rejectedReason: {
+        type: String, 
+        require: true
+    },
     approvedDate: {
         type: Date,
         required: true,
+    },
+    approvedBy: {
+        type: String,
+        require: true
     }
+
 });
 
 const WFHApplicationModel: Model<IWFHApplication> = mongoose.model<IWFHApplication>("WFHApplication", WFHApplicationSchema);
 
 export {WFHApplicationModel,IWFHApplication};
+

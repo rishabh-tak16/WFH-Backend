@@ -1,11 +1,17 @@
 import { Request, Response } from "express";
 import nodemailer from "nodemailer";
-import generateOtp from "./GenerateOTP.controller";
 import OtpModel from "../models/otp.model";
 
+const generateOtp = (): string => {
+    const otp = Math.floor(100000 + Math.random() * 900000);
+    return otp.toString();
+};
+
 const SendMail = async (req: Request, res: Response) => {
-    let { email } = req.body;
+    let { email } = req.params;
     let otp = generateOtp();
+    console.log("this is my otp>>>>>>",otp);
+    
 
     if ([email, otp].some(el => !el || el === "")) {
         return res.status(200).json({
@@ -22,12 +28,12 @@ const SendMail = async (req: Request, res: Response) => {
             secure: false,
             auth: {
                 user: 'rishabhtak16@gmail.com',
-                pass: 'bgjb jvnh afqs rfja' // need to change....
+                pass: 'bgjb jvnh afqs rfja'
             }
         });
 
         const ack = await transporter.sendMail({
-            from: 'Mail send to <rishabhtak16@gmail.com>',
+            from: 'Mail send by <rishabhtak16@gmail.com>',
             to: email,
             subject: `Hello Mr.${email}`,
             html: `Your OTP is <b>${otp}</b> this is valid for only 15 min`,

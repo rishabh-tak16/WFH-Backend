@@ -1,6 +1,7 @@
 import { Request, Response } from 'express';
 import { WFHApplicationModel, IWFHApplication } from '../models/wfhApplication.model';
 
+
 const DashBoardOrganizationUser = async (req: Request, res: Response) => {
     try {
         const { email } = req.user;
@@ -17,4 +18,6 @@ const DashBoardOrganizationUser = async (req: Request, res: Response) => {
     }
 };
 
+
 export default DashBoardOrganizationUser;
+

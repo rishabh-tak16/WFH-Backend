@@ -4,7 +4,6 @@ interface ISystemUser {
     firstName: string;
     lastName: string;
     email: string;
-    password: string;
     dob: Date;
 }
 
@@ -21,10 +20,6 @@ const SystemUserSchema = new mongoose.Schema<ISystemUser>({
         type: String,
         required: true,
         unique: true,
-    },
-    password: {
-        type: String,
-        required: true,
     },
     dob: {
         type: Date,

@@ -5,6 +5,7 @@ interface IOrganization extends Document{
     max_wfh: number;
     userEmail: string[];
     admin: string;
+    delive: boolean
 }
 
 const OrganizationSchema = new mongoose.Schema<IOrganization>({
@@ -24,7 +25,10 @@ const OrganizationSchema = new mongoose.Schema<IOrganization>({
     admin: {
         type: String,
         required: true,
-    }
+    },
+    // delive:{
+    //     type:Boolean
+    // }
 });
 
 const Organization: Model<IOrganization> = mongoose.model<IOrganization>("Organization", OrganizationSchema);

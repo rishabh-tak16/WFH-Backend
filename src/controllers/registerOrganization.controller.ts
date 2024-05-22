@@ -5,9 +5,9 @@ const RegisterOrganization = async (req: Request, res: Response) => {
     try {
         const { name, max_wfh }: { name: string, max_wfh: number } = req.body;
 
-        if (!name.trim() || !max_wfh) {
-            return res.status(400).json({ status: "false", msg: "Organization name or max_wfh cannot be empty" });
-        }
+        // if (!name.trim() || !max_wfh) {
+        //     return res.status(400).json({ status: "false", msg: "Organization name or max_wfh cannot be empty" });
+        // }
 
         const existingOrg: IOrganization | null = await Organization.findOne({ name });
 

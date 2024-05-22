@@ -4,12 +4,11 @@ import { Organization, IOrganization } from '../models/organization.model';
 
 const RegisterOrganizationUser = async (req: Request, res: Response) => {
     try {
-        const { organizationName, firstName, lastName, email, password, dob, doj }: 
-        { organizationName: string, firstName: string, lastName: string, email: string, password: string, dob: Date, doj: Date } = req.body;
+        const { organizationName, firstName, lastName, email, dob, doj }: 
+        { organizationName: string, firstName: string, lastName: string, email: string, dob: Date, doj: Date } = req.body;
 
-        console.log(organizationName, firstName, lastName, email, password, dob, doj);
 
-        if (![organizationName, firstName, email, password, dob, doj].every(Boolean)) {
+        if (![organizationName, firstName, email, dob, doj].every(Boolean)) {
             return res.status(400).json({ status: "false", msg: "Please fill all required fields" });
         }
 
@@ -32,7 +31,7 @@ const RegisterOrganizationUser = async (req: Request, res: Response) => {
             }
         );
 
-        console.log("User: ", organizationName, firstName, lastName, email, password, dob, doj);
+        console.log("User: ", organizationName, firstName, lastName, email, dob, doj);
 
         const userData: IOrganizationUser | null = await OrganizationUser.findOne({ email: email });
 
@@ -42,7 +41,6 @@ const RegisterOrganizationUser = async (req: Request, res: Response) => {
                 firstName: firstName,
                 lastName: lastName,
                 email: email,
-                password: password,
                 dob: dob,
                 doj: doj,
                 organization_list: [organizationName] 
