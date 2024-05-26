@@ -3,7 +3,7 @@ import { Organization } from "../models/organization.model";
 
 const GetAllOrganizations = async (req: Request, res: Response) => {
   try {
-    const organizations = await Organization.find();
+    const organizations = await Organization.find({delive:false});
     res.status(200).json({ organizations });
   } catch (error) {
     console.log(error);

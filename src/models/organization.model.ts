@@ -26,9 +26,10 @@ const OrganizationSchema = new mongoose.Schema<IOrganization>({
         type: String,
         required: true,
     },
-    // delive:{
-    //     type:Boolean
-    // }
+    delive:{
+        type:Boolean,
+        default : false
+    }
 });
 
 const Organization: Model<IOrganization> = mongoose.model<IOrganization>("Organization", OrganizationSchema);

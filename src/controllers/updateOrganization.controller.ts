@@ -1,24 +1,22 @@
 import { Request, Response } from 'express';
-import { WFHApplicationModel } from '../models/wfhApplication.model';
+import { Organization } from '../models/organization.model';
 
 const UpdateOrganization = async (req: Request, res: Response) => {
     try {
-        const { orgName, max_wfh, newAdmin}: { orgName: string, max_wfh: number, newAdmin: string } = req.body;
+        const { _id, orgName, max_wfh}: { _id:string, orgName: string, max_wfh: number} = req.body;
 
         //console.log("Body from application: ",JSON.stringify(req.body));
-        
-
-        if (!orgName || !max_wfh || !newAdmin) {
-            return res.status(400).json({ status: false, msg: "Fill the details" });
+    
+        if (!_id || !orgName || !max_wfh) {
+            return res.status(400).json({ status: false, msg: "Id or orgName or Max_WFH is missing" });
         }
 
-        const response = await WFHApplicationModel.updateOne(
-            {  },
+        const response = await Organization.updateOne(
+            { _id},
             {
                 $set: {
                     name: orgName,
-                    max_wfh,
-                    admin: newAdmin
+                    max_wfh
                 }
             }
         );

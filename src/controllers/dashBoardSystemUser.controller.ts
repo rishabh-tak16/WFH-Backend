@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { Model } from 'mongoose';
 import { OrganizationUser, IOrganizationUser } from '../models/organizationUser.model';
 
 const DashBoardSystemUser = async (req: Request, res: Response): Promise<void> => {

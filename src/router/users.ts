@@ -18,12 +18,14 @@ import getAllApplication from "../controllers/getAllApplication.controller";
 import getUserAllApplication from "../controllers/getUserAllApplication.controller";
 import GetAllOrganizations from "../controllers/getAllOrganization.controller";
 import UpdateOrganization from "../controllers/updateOrganization.controller";
+import DeleteOrganization from "../controllers/deleteOrganization.controller";
+import getAllApplicationFiltered from '../controllers/getApplicationFiltered.controller'
 
 const router = express.Router();
 
 // System User
 router.post("/sysuser-register", RegisterSystemUser);
-router.post("/sysuser-login", LoginSystemUser);
+router.get("/sysuser-login", LoginSystemUser);
 router.post("/sysuser-dashboard",Auth, DashBoardSystemUser);
 
 // Organization Users
@@ -37,16 +39,18 @@ router.post("/admin",CheckAdmin);
 router.post("/org-register", RegisterOrganization);
 router.post("/org-admin", MakeAdmin);
 router.post("/find-user",FindUserByEmail);
+router.get("/organization",GetAllOrganizations);
+router.put('/update-org', UpdateOrganization);
+router.put('/delete-org', DeleteOrganization);
 
 // Utility Route
 router.get("/mail/:email", SendMail);
 router.post('/application', WFHApplication);
 router.put('/application/status', UpdateWFH_Application);
 router.post("/all-application",getAllApplication);
+
+router.get("/all-application/:orgName/filter",getAllApplicationFiltered);           //filtered api
 router.post("/user-application",getUserAllApplication);
 
-//Organization
-router.get("/organization",GetAllOrganizations);
-router.put('/update-org', UpdateOrganization);
 
 export default router;
