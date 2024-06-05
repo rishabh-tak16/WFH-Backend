@@ -3,7 +3,7 @@ import { WFHApplicationModel } from "../models/wfhApplication.model";
 
 interface FilterParameters {
   email?: string,
-  availedAt?: string,
+  createdDate?: string|Date,
   reason?: string,
   status?: string,
   approvedBy?: string
@@ -11,11 +11,11 @@ interface FilterParameters {
 
 const getAllApplicationFiltered = async (req: Request, res: Response) => {
   const {orgName } = req.params;
-  const { email, availedAt, reason, status, approvedBy} = req.query as Record<string, string | undefined>;
+  const { email, createdDate, reason, status, approvedBy} = req.query as Record<string, string | undefined>;
 
   const filterQuery: FilterParameters = {
     email,
-    availedAt,
+    createdDate,
     reason,
     status,
     approvedBy,
@@ -43,15 +43,18 @@ const getAllApplicationFiltered = async (req: Request, res: Response) => {
       delete filterQuery.approvedBy;
     }
 
-    if(!filterQuery.availedAt || filterQuery.availedAt === '' || filterQuery.availedAt === 'undefined'){
-      delete filterQuery.availedAt;
+    if (createdDate && createdDate !== '' && createdDate !== 'undefined' && createdDate !== 'null') {
+      const date = new Date(createdDate);
+      date.setHours(0, 0, 0, 0); 
+      filterQuery.createdDate = date;
+    } else {
+      delete filterQuery.createdDate;
     }
 
     const findObj = {
       ...filterQuery,
       orgName
     }
-    //console.log(findObj);
     
     const applications = await WFHApplicationModel.find(findObj);
     res.status(200).json({ applications });

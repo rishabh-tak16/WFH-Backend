@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { Organization } from "../models/organization.model";
 
 const CheckAdmin = async (req: Request, res: Response) => {
-  const { email, orgName } = req.body;
+  const { email, orgName } = req.query;
 
   if (!email || !orgName) {
     return res
@@ -16,9 +16,9 @@ const CheckAdmin = async (req: Request, res: Response) => {
       name: orgName,
     });
     if (organization) {
-      return res.json({ isAdmin: true });
+      return res.status(200).json({ isAdmin: true });
     } else {
-      return res.json({ isAdmin: false });
+      return res.status(200).json({ isAdmin: false });
     }
   } catch (error) {
     return res

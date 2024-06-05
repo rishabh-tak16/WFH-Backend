@@ -7,3 +7,5 @@ export const createUser = async (userData: IOrganizationUser): Promise<IOrganiza
 export const getUserByEmail = async (email: string): Promise<IOrganizationUser | null> => {
     return await OrganizationUser.findOne({ email });
 };
+
+

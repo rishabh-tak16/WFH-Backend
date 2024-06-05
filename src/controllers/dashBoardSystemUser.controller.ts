@@ -7,7 +7,6 @@ const DashBoardSystemUser = async (req: Request, res: Response): Promise<void> =
         const user_data: IOrganizationUser[] = await OrganizationUser.find({});
         
         res.status(200).json({
-            user: req.user,
             user_data
         });
     } catch (error) {

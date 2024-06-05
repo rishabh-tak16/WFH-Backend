@@ -5,7 +5,6 @@ import { Organization } from "../models/organization.model";
 const DeleteOrganizationUser = async (req: Request, res: Response) => {
     try {
         const { email, organizationValue }: { email: string, organizationValue: string } = req.body;
-        console.log(">>>>>>>>>>>>>>>>>>>>>>>",req.body);
         if (!(email && organizationValue)) {
             return res.status(400).json({ status: false, msg: "Email and organization are required" });
         }

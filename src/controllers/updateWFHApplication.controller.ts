@@ -5,9 +5,6 @@ const UpdateWFH_Application = async (req: Request, res: Response) => {
     try {
         const { _id, statusValue, userEmail, rejectedReason }: { _id: string, statusValue: number, userEmail: string, rejectedReason: string } = req.body;
 
-        console.log("Body from application: ",JSON.stringify(req.body));
-        
-
         if (!_id || !userEmail) {
             return res.status(400).json({ status: false, msg: "Fill the detail" });
         }
